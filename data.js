@@ -269,7 +269,7 @@ const TIMELINE = [
   { date: "Mar 2020", text: "Started my first YouTube channel" },
   { date: "Sep 2021", text: "Moved to Toronto" },
   { date: "Apr 2023", text: "Graduated in Media Communications at Humber" },
-  { date: "Aug 2023", text: "Started at Curiocity Media Group / ZoomerMedia" },
+  { date: "Jul 2023", text: "Started at Curiocity Media Group / ZoomerMedia" },
   { date: "Sep 2024", text: "Started editing for CantoMando" },
   { date: "Jan 2025", text: "Edited my first short film: Thelma & Louise for Film Farm" },
   { date: "Jan 2025", text: "Crossed 500 videos edited" },
