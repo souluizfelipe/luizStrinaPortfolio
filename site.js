@@ -156,7 +156,7 @@ const inAllWork = (() => {
 
 // One tile: the brand name appears over the frame on hover
 function workTile(p) {
-  return `<a class="wtile${p.vertical ? " wtile--vertical" : ""}" href="project.html?p=${p.id}" data-id="${p.id}" data-tag="${p.tag}"${inAllWork(p) ? "" : ' data-in-all="false" hidden'}>
+  return `<a class="wtile${p.vertical ? " wtile--vertical" : ""}" href="project.html?p=${p.id}" data-id="${p.id}" data-tag="${p.tag}" data-tags="${[p.tag].concat(p.also || []).join("|")}"${inAllWork(p) ? "" : ' data-in-all="false" hidden'}>
     <div class="wtile-media"><img src="${p.still}" alt="" loading="lazy"><span class="play play--small"></span>
       <div class="wtile-over"><span class="wtile-brand">${esc(p.client)}</span><span class="wtile-title">${esc(p.title)}</span></div>
     </div>
@@ -187,7 +187,7 @@ function initSelectedWork() {
     const key = row.dataset.filter;
     rows.forEach((r) => r.classList.toggle("is-on", r === row));
     grids.querySelectorAll(".wtile").forEach((t) => {
-      t.hidden = key === "All" ? t.dataset.inAll === "false" : t.dataset.tag !== key;
+      t.hidden = key === "All" ? t.dataset.inAll === "false" : t.dataset.tags.split("|").indexOf(key) < 0;
     });
     grids.querySelectorAll(".wgrid").forEach((g) => { g.hidden = !g.querySelector(".wtile:not([hidden])"); });
     // A category with no videos yet shows a short "coming soon" note
@@ -396,9 +396,11 @@ function initHomeExtras() {
   // Client rows: show a frame next to the cursor
   const thumb = document.getElementById("cl-thumb");
   document.querySelectorAll(".clients-list .cl-row[data-thumb]").forEach((row) => {
-    row.addEventListener("mouseenter", () => { thumb.innerHTML = `<img src="${row.dataset.thumb}" alt="">`; thumb.classList.add("is-on"); });
+    // The frame takes the cover's shape: 9:16 for vertical videos, 16:9 otherwise
+    const shape = () => { const img = thumb.querySelector("img"); if (img && img.naturalWidth) thumb.classList.toggle("is-vertical", img.naturalHeight > img.naturalWidth); };
+    row.addEventListener("mouseenter", () => { thumb.innerHTML = `<img src="${row.dataset.thumb}" alt="">`; thumb.querySelector("img").addEventListener("load", shape); shape(); thumb.classList.add("is-on"); });
     row.addEventListener("mouseleave", () => thumb.classList.remove("is-on"));
-    row.addEventListener("mousemove", (e) => { thumb.style.transform = `translate(${e.clientX + 24}px, ${e.clientY - 80}px)`; });
+    row.addEventListener("mousemove", (e) => { thumb.style.transform = `translate(${e.clientX + 24}px, ${e.clientY - (thumb.classList.contains("is-vertical") ? 150 : 80)}px)`; });
   });
 }
 

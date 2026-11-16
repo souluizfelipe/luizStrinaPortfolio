@@ -60,18 +60,28 @@ const NARRATIVE = [
 // Client pages (work.html?c=<id>). Cover images are the logo tiles on the homepage.
 const CLIENTS = [
   {
-    // Videos coming soon: add { title, credits, video, poster } items (files in assets/video/knownfour/)
-    id: "knownfour", name: "Known Four", cover: null,
+    id: "knownfour", name: "Known Four", cover: "assets/img/knownfour/donald-glover.jpg",
     credits: ["Platform: Instagram", "Show: Known Four (@knownfourshow)", "Host: @tpatzz", "Role: Editor"],
     work: "A social guessing-game show, “Guess what they’re known for”",
-    items: [],
+    items: [
+      { title: "Known Four: Johnny Depp", credits: ["Role: Editor"], video: "assets/video/knownfour/johnny-depp.mp4", poster: "assets/img/knownfour/johnny-depp.jpg" },
+      { title: "Known Four: Al Pacino", credits: ["Role: Editor"], video: "assets/video/knownfour/al-pacino.mp4", poster: "assets/img/knownfour/al-pacino.jpg" },
+      { title: "Known Four: Donald Glover", credits: ["Role: Editor"], video: "assets/video/knownfour/donald-glover.mp4", poster: "assets/img/knownfour/donald-glover.jpg" },
+    ],
   },
   {
-    // Videos coming soon: add { title, credits, video, poster } items (files in assets/video/blogto/)
-    id: "blogto", name: "blogTO Social Content", cover: null,
+    id: "blogto", name: "blogTO Social Content", cover: "assets/img/blogto/transit-race-stadium.jpg",
     credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producer & Editor"],
     work: "Cutting up raw footage, selecting best moments, creating the story arc, adding music, SFX and GFX",
-    items: [],
+    items: [
+      { title: "Reporter: How the F*** Do Municipal Elections Work?", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/municipal-elections.mp4", poster: "assets/img/blogto/municipal-elections.jpg" },
+      { title: "Guess the Best Burgers with @piggies_to", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/guess-best-burgers.mp4", poster: "assets/img/blogto/guess-best-burgers.jpg" },
+      { title: "What Can $10, $20 and $50 Get You at the CNE?", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/cne-challenge.mp4", poster: "assets/img/blogto/cne-challenge.jpg" },
+      { title: "Guess the List: Best Banh Mi", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/guess-the-list-banh-mi.mp4", poster: "assets/img/blogto/guess-the-list-banh-mi.jpg" },
+      { title: "Vibe Check: Yacht Party", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/vibe-check-yacht-party.mp4", poster: "assets/img/blogto/vibe-check-yacht-party.jpg" },
+      { title: "Transit Race: Union to Toronto Stadium", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/transit-race-stadium.mp4", poster: "assets/img/blogto/transit-race-stadium.jpg" },
+      { title: "Race: Union to Bay, Yonge vs University", credits: ["Role: Producing, shooting & editing"], video: "assets/video/blogto/race-union-to-bay.mp4", poster: "assets/img/blogto/race-union-to-bay.jpg" },
+    ],
   },
   {
     id: "cantomando", name: "CantoMando - YouTube", cover: "assets/img/cantomando.webp",
@@ -165,8 +175,8 @@ const WORK_FILTERS = [
   { key: "YouTube", title: "YouTube", clip: "assets/video/reel-2025.mp4#t=6", poster: "assets/img/cantomando.webp", shape: "yt" },
   { key: "Narrative", title: "Narrative", clip: "assets/video/thelma-louise.mp4#t=60", poster: "assets/img/thelma-louise-poster.jpg", shape: "film" },
   { key: "Social", title: "Social Content", clip: "assets/video/watchparty.mp4#t=8", poster: "assets/img/watchparty-poster.jpg", shape: "social" },
-  // Shows you create end to end (concept → shooting → editing). Add a clip/poster once the Known Four videos are in.
-  { key: "Social Show", title: "Social Show" },
+  // Shows you create end to end (concept → shooting → editing)
+  { key: "Social Show", title: "Social Show", clip: "assets/video/knownfour/donald-glover.mp4#t=5", poster: "assets/img/knownfour/donald-glover.jpg", shape: "social" },
 ];
 
 // "All work" shows only this many YouTube videos (the first ones in PROJECTS); the YouTube filter shows them all
@@ -174,7 +184,7 @@ const ALL_YOUTUBE_LIMIT = 3;
 
 // Every project in the Selected Work grid, and its page (project.html?p=<id>).
 // Horizontal videos show in the top grid; vertical: true puts a video in the 9:16 grid below.
-// tag: "YouTube", "Narrative", "Social" or "Social Show".
+// tag: "YouTube", "Narrative", "Social" or "Social Show". also: ["Social Show"] makes it show under another filter too.
 
 const PROJECTS = [
   { id: "spiciest-food", title: "Which Country has the SPICIEST food?", client: "CantoMando", clientPage: "cantomando", tag: "YouTube",
@@ -225,6 +235,36 @@ const PROJECTS = [
   { id: "bluejays-ga", title: "Best Spot to Watch a Blue Jays Game With a GA Ticket", client: "Offside", clientPage: "offside", tag: "Social",
     still: "assets/img/bluejays-ga-poster.jpg", video: "assets/video/bluejays-ga.mp4", vertical: true,
     credits: ["Platform: Instagram", "Channel: Offside", "Role: Host/Videographer/Editor"] },
+  { id: "knownfour-johnny-depp", title: "Known Four: Johnny Depp", client: "Known Four", clientPage: "knownfour", tag: "Social Show",
+    still: "assets/img/knownfour/johnny-depp.jpg", video: "assets/video/knownfour/johnny-depp.mp4", vertical: true,
+    credits: ["Platform: Instagram", "Show: Known Four (@knownfourshow)", "Host: @tpatzz", "Role: Editor"] },
+  { id: "knownfour-al-pacino", title: "Known Four: Al Pacino", client: "Known Four", clientPage: "knownfour", tag: "Social Show",
+    still: "assets/img/knownfour/al-pacino.jpg", video: "assets/video/knownfour/al-pacino.mp4", vertical: true,
+    credits: ["Platform: Instagram", "Show: Known Four (@knownfourshow)", "Host: @tpatzz", "Role: Editor"] },
+  { id: "knownfour-donald-glover", title: "Known Four: Donald Glover", client: "Known Four", clientPage: "knownfour", tag: "Social Show",
+    still: "assets/img/knownfour/donald-glover.jpg", video: "assets/video/knownfour/donald-glover.mp4", vertical: true,
+    credits: ["Platform: Instagram", "Show: Known Four (@knownfourshow)", "Host: @tpatzz", "Role: Editor"] },
+  { id: "blogto-municipal-elections", title: "Reporter: How the F*** Do Municipal Elections Work?", client: "blogTO", clientPage: "blogto", tag: "Social",
+    still: "assets/img/blogto/municipal-elections.jpg", video: "assets/video/blogto/municipal-elections.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-guess-best-burgers", title: "Guess the Best Burgers with @piggies_to", client: "blogTO", clientPage: "blogto", tag: "Social", also: ["Social Show"],
+    still: "assets/img/blogto/guess-best-burgers.jpg", video: "assets/video/blogto/guess-best-burgers.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-cne-challenge", title: "What Can $10, $20 and $50 Get You at the CNE?", client: "blogTO", clientPage: "blogto", tag: "Social",
+    still: "assets/img/blogto/cne-challenge.jpg", video: "assets/video/blogto/cne-challenge.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-guess-the-list-banh-mi", title: "Guess the List: Best Banh Mi", client: "blogTO", clientPage: "blogto", tag: "Social", also: ["Social Show"],
+    still: "assets/img/blogto/guess-the-list-banh-mi.jpg", video: "assets/video/blogto/guess-the-list-banh-mi.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-vibe-check-yacht-party", title: "Vibe Check: Yacht Party", client: "blogTO", clientPage: "blogto", tag: "Social",
+    still: "assets/img/blogto/vibe-check-yacht-party.jpg", video: "assets/video/blogto/vibe-check-yacht-party.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-transit-race-stadium", title: "Transit Race: Union to Toronto Stadium", client: "blogTO", clientPage: "blogto", tag: "Social",
+    still: "assets/img/blogto/transit-race-stadium.jpg", video: "assets/video/blogto/transit-race-stadium.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
+  { id: "blogto-race-union-to-bay", title: "Race: Union to Bay, Yonge vs University", client: "blogTO", clientPage: "blogto", tag: "Social",
+    still: "assets/img/blogto/race-union-to-bay.jpg", video: "assets/video/blogto/race-union-to-bay.mp4", vertical: true,
+    credits: ["Platform: Instagram & TikTok", "Channel: blogTO", "Role: Producing, shooting & editing"] },
 ];
 
 /* ---------- Homepage: pitch, numbers, clients, timeline ---------- */
@@ -249,8 +289,8 @@ const STATS = [
 
 // "Who I've edited for". link = client page; thumb = frame shown on hover (optional).
 const CLIENT_LIST = [
-  { name: "blogTO", role: "Producing, shooting & editing", years: "Aug 2023 – today", what: "Toronto food, events and city stories for Instagram & TikTok.", link: "work.html?c=blogto" },
-  { name: "Known Four", role: "Editing", years: "2025 – today", what: "Social guessing-game show, “Guess what they’re known for”, hosted by @tpatzz.", link: "work.html?c=knownfour" },
+  { name: "blogTO", role: "Producing, shooting & editing", years: "Aug 2023 – today", what: "Toronto food, events and city stories for Instagram & TikTok.", link: "work.html?c=blogto", thumb: "assets/img/blogto/transit-race-stadium.jpg" },
+  { name: "Known Four", role: "Editing", years: "2025 – today", what: "Social guessing-game show, “Guess what they’re known for”, hosted by @tpatzz.", link: "work.html?c=knownfour", thumb: "assets/img/knownfour/donald-glover.jpg" },
   { name: "CantoMando", role: "Editing", years: "Sep 2024 – 2025", what: "Long-form YouTube food & culture videos: story, pacing, music, SFX and graphics.", link: "work.html?c=cantomando", thumb: "https://i.ytimg.com/vi/zx1aLl67tuk/hqdefault.jpg" },
   { name: "Curiocity Toronto", role: "Producing, shooting & editing", years: "Mar 2024 – today", what: "Travel and city guides for Instagram & TikTok, like Toronto’s Tiny Traveller.", link: "work.html?c=curiocity", thumb: "assets/img/longpoint-poster.jpg" },
   { name: "Offside", role: "Producing, shooting & editing", years: "Jan 2025 – today", what: "Sports culture: Blue Jays watch parties, Valorant Masters, Rockin’ Rick.", link: "work.html?c=offside", thumb: "assets/img/watchparty-poster.jpg" },
