@@ -125,18 +125,20 @@ const CLIENTS = [
 
 // "My Content" on the homepage. With a feed URL it shows your latest Instagram posts automatically.
 // Get a free feed URL at https://behold.so (connect @luiz.strina → create a JSON feed → copy its URL).
-// Without one, it shows the fallback tiles below: your 10 latest reels (October 2026), newest first.
+// Without one, it shows the fallback tiles below: your 10 latest reels (November 2026), newest first.
 // Only videos (reels) are shown; each plays in the same pop-up as Selected Work.
 // To add a reel: cover in assets/img/reels/<ID>.jpg and video in assets/video/reels/<ID>.mp4.
 const MY_CONTENT = {
   feed: "", // e.g. "https://feeds.behold.so/XXXXXXXXXXXX"
   count: 10,
   fallback: [
+    { image: "assets/img/reels/DfxIzutMdMS.jpg", reel: "DfxIzutMdMS", video: "assets/video/reels/DfxIzutMdMS.mp4", caption: "Eu gosto do verão / I like summertime" },
+    { image: "assets/img/reels/DfNB9vjs_8Z.jpg", reel: "DfNB9vjs_8Z", video: "assets/video/reels/DfNB9vjs_8Z.mp4", caption: "Seja curioso / Be curious" },
     { image: "assets/img/mine-2.webp", reel: "DXDMOx2gD4j", video: "assets/video/reels/DXDMOx2gD4j.mp4", caption: "Eu gosto de coisas simples" },
     { image: "assets/img/mine-3.webp", reel: "DWSmV5ZgOLr", video: "assets/video/reels/DWSmV5ZgOLr.mp4", caption: "Minha lente nova / My new lens" },
     { image: "assets/img/mine-4.webp", reel: "DV98YHijNIh", video: "assets/video/reels/DV98YHijNIh.mp4", caption: "Minha Camcorder / My Camcorder" },
     { image: "assets/img/mine-5.webp", reel: "DVuOIUQj7hX", video: "assets/video/reels/DVuOIUQj7hX.mp4", caption: "A criatividade é o inimigo / Creativity is the enemy" },
-    ...["DVdyAnvjU53", "DVXik6dDTG_", "DVIGnA6jRJA", "DU18BuiDenK", "DUhcMWwDUzb", "DUCgrTjDcGa"]
+    ...["DVdyAnvjU53", "DVXik6dDTG_", "DVIGnA6jRJA", "DU18BuiDenK"]
       .map((id) => ({ image: `assets/img/reels/${id}.jpg`, reel: id, video: `assets/video/reels/${id}.mp4`, caption: "Reel by @luiz.strina" })),
   ],
 };
